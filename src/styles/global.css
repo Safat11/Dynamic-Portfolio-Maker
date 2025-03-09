@@ -1,8 +1,19 @@
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: url('/image/EWU-classroom.jpg') no-repeat center center fixed; /* Replace with your actual image URL */
+    background-size: cover;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #b5c3d1;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
   }
   
   .header {
@@ -16,7 +27,7 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background: white;
+    background: rgb(130, 122, 108);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
@@ -24,7 +35,7 @@ body {
   input, textarea {
     width: 100%;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
@@ -40,5 +51,23 @@ body {
   
   button:hover {
     background: #2b6b2f;
+  }
+
+  /* Dark Mode */
+body.dark-theme {
+    background: #333; /* Dark background */
+    color: white; /* Light text for contrast */
+  }
+  
+  body.dark-theme .header {
+    background: #222; /* Dark header */
+  }
+  
+  body.dark-theme button {
+    background: #555; /* Darker buttons */
+  }
+  
+  body.dark-theme button:hover {
+    background: #444; /* Darker hover effect */
   }
   

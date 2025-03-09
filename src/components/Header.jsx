@@ -18,7 +18,10 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
           <option value="es">Spanish</option>
           <option value="fr">French</option>
         </select>
-        <button onClick={() => document.body.classList.toggle("dark-theme")}>Toggle Dark/Light Mode</button>
+        <button onClick={() => document.body.classList.toggle("dark-theme")}>
+  Dark/Light Mode
+</button>
+
         {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
       </div>
     </header>
