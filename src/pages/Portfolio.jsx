@@ -21,15 +21,21 @@ const Portfolio = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPhoto(reader.result); // Store Base64 Image
+        setPhoto(reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Handle Adding Work Experience
+  // Add Work Experience
   const addWorkExperience = () => {
     setWorkExperience([...workExperience, { company: "", duration: "", responsibilities: "" }]);
+  };
+
+  // Remove Work Experience
+  const removeWorkExperience = (index) => {
+    const updatedWork = workExperience.filter((_, i) => i !== index);
+    setWorkExperience(updatedWork);
   };
 
   // Handle Work Experience Change
@@ -39,7 +45,7 @@ const Portfolio = () => {
     setWorkExperience(updatedWork);
   };
 
-  // Handle Portfolio PDF Generation
+  // Generate PDF
   const generatePDF = () => {
     const doc = new jsPDF();
     doc.text(`Portfolio of ${fullName}`, 10, 10);
@@ -110,6 +116,8 @@ const Portfolio = () => {
 
           <label>Responsibilities:</label>
           <textarea value={work.responsibilities} onChange={(e) => handleWorkChange(index, "responsibilities", e.target.value)} />
+
+          <button type="button" onClick={() => removeWorkExperience(index)}>Remove</button>
         </div>
       ))}
       <button type="button" onClick={addWorkExperience}>Add Work Experience</button>
