@@ -69,7 +69,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="portfolio-form">
+    <div className="form-container">
       <h2>Create Your Portfolio</h2>
       
       <label>Full Name:</label>
