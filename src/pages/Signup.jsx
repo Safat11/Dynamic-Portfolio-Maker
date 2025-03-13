@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth, createUserWithEmailAndPassword } from "../auth";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -7,13 +8,18 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
       alert("Sign up successful!");
       navigate("/");
-    } else {
-      alert("Passwords do not match.");
+    } catch (error) {
+      alert(error.message);
     }
   };
 

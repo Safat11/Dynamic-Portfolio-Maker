@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth, signInWithEmailAndPassword } from "../auth";
 
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (email && password) {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       setIsAuthenticated(true);
       navigate("/portfolio");
-    } else {
-      alert("Please enter valid credentials");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
